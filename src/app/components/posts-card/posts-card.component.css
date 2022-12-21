@@ -1,0 +1,16 @@
+.card{
+    height: 450px;
+}
+
+.myCardImg{
+    background-position: top center;
+    background-size: cover;
+    height: 275px;
+}
+.btn{
+    background-color: darkslateblue;  
+  }
+
+.btn:hover {
+    background-color: rgb(46, 40, 89);
+}

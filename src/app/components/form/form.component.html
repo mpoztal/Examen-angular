@@ -1,0 +1,57 @@
+<!-- 2º y 3º paso;Creamos un atributo dentro de la etiqueta form y implementamos  ngSubmit que llame a una funcion sin parametros--> 
+<form novalidate [formGroup]="form" (ngSubmit)="getDataForm()" >
+
+    <div class="my-2">
+        <label for="author" class="form-label">Autor</label>
+        <input type="text" class="form-control" id="author" formControlName="author">
+        <p class="error" *ngIf= "checkControl('author', 'required')">El campo es obligatorio</p>
+    </div>
+
+    <div class="my-2">
+        <label for="date" class="form-label">Fecha</label>
+        <input type="date" class="form-control" id="date" formControlName="date">
+        <p class="error" *ngIf= "checkControl('date', 'required')">El campo es obligatorio</p>
+    </div>
+
+    <div class="my-2">
+        <label for="title" class="form-label">Titulo</label>
+<!-- 4º a cada campo le pasamos  formControlName="..."   -->
+        <input type="text" class="form-control" id="title" formControlName="title">
+
+        <!-- IMPORTANTE! -->
+<!-- Validacion de los campos x si estan completos o si cumplen con la longitud minima "checkControl('title', 'required')" y  "checkControl('title', 'minlength')"-->
+
+        <p class="error" *ngIf= "checkControl('title', 'required')">El campo es obligatorio</p> 
+        <p class="error" *ngIf= "checkControl('title', 'minlength')">La longitud mínima del campo es de 3 caracteres</p> 
+
+    </div>
+
+    <div class="my-2">
+        <label for="text" class="form-label">Texto</label>
+        <textarea  rows="3" class="form-control" id="text" formControlName="text"></textarea>
+
+    </div>
+
+
+    <div class="my-2">
+        <label for="img" class="form-label">Imagen</label>
+        <input type="text" class="form-control" id="img" formControlName="img">
+         
+        <p class="error" *ngIf= "checkControl('img', 'imgvalidator')">     
+            {{form.get('img')?.errors?.['imgvalidator']}}
+        </p> 
+    </div>
+
+    <div class="my-4">
+        <label for="categoryId" class="form-label">Categoria</label>
+        <select id="categoryId" class="form-select" formControlName="categoryId">
+            <option value="">Selecciona una categoria</option>
+            <option *ngFor="let category of categories" [value]="category.id">{{category.title}}</option>
+        </select>
+    </div>
+
+    <input type="submit" class="btn btn-danger mt-2" value="Enviar" [disabled]="!form.valid">
+</form>
+
+
+

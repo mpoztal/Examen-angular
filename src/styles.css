@@ -1,0 +1,17 @@
+
+:root{
+
+    --bs-body-bg:  #735aa2d1 !important; 
+  }
+
+html{
+   background-color: var( --bs-body-bg); 
+
+  }
+
+
+
+
+/* .btn:hover {
+  background-color: rgb(47, 40, 93);
+} */
